@@ -25,10 +25,29 @@ function bePositive($arr, $arrayNumber)
     // Step 1: sketch out plan using comments (include ucid and date)
     // Step 2: Add/commit your outline of comments (required for full credit)
     // Step 3: Add code to solve the problem (add/commit as needed)
-
+    //rc728 2/22/26
     $output = array_fill(0, count($arr), null); // Initialize output array
     // Start Solution Edits
+    //step 1: cycle through each variable in the array
+    //step 2: get the original type of the array to have it for later when putting it back into the array
+    //step 3: turn the variable into a float for easier conversion to a positive number
+    //step 4: use absolute on the variable to turn it positive
+    //step 5: use an if else to check the original type of the variable and put it back into the array as its original type
     
+    $positive = [];
+    foreach($arr as $i => $value) {
+        $originalType = gettype($value);
+        $num = (float)$value;
+        $num = abs($num);
+
+        if($originalType === "integer"){
+            $output[$i] = (int)$num;
+        }elseif($originalType === "double"){
+            $output[$i] = (float)$num;
+        }elseif($originalType === "string"){
+            $output[$i] = (string)$num;
+        }   
+    }
 
     // End Solution Edits
     printScenario3Output($output);

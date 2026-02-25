@@ -23,9 +23,19 @@ function printOdds($arr, $arrayNumber)
     // Step 1: sketch out plan using comments (include ucid and date)
     // Step 2: Add/commit your outline of comments (required for full credit)
     // Step 3: Add code to solve the problem (add/commit as needed)
-    //
-    
-    $output_result = "";
+    //Rc728 2/22/26
+    //step 1: loop through each value of the array
+    //step 2: check if the value is odd using % where if the value % 2 does not equal 0, then it is odd
+    //step 3: if it's odd, then add the value to odds
+    //step 4: output_results makes it a string and lists the values in odds with a comma between each value
+    $odds = [];
+
+    foreach ($arr as $value) {
+        if ($value % 2 != 0) {
+            $odds[] = $value;
+        }
+    }
+    $output_result = implode(", ", $odds);
     // Start Solution Edits
     // set solution to $output_result variable
    

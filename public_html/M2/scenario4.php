@@ -35,7 +35,28 @@ function transformText($arr, $arrayNumber) {
         // Step 1: sketch out plan using comments (include ucid and date)
         // Step 2: Add/commit your outline of comments (required for full credit)
         // Step 3: Add code to solve the problem (add/commit as needed)
+        //rc728 2/22/26
+        // Step 1: Remove common special characters by listing them out in symbols and using str_replace to get rid of them
+        // Step 2: remove leading/trailing spaces using trim
+        // Step 3: Remove duplicate spaces by using an while loop to see if the index has a double pace in it and if it does use str_replace to change it to a single space
+        // Step 4: Convert to title case by first making everything lowercase then using ucwords to make it capital
+        $symbols = [
+            "!", "@", "#", "$", "%", "^", "&"
+        ];
 
+        $clean = str_replace($symbols, "", $text);
+
+        $clean = trim($clean);
+
+        while (strpos($clean, "  ") !== false) {
+            $clean = str_replace("  ", " ", $clean);
+        }
+
+        $clean = strtolower($clean);
+        $placeholderForModifiedPhrase = ucwords($clean);
+
+        $placeholderForMiddleCharacters = "";
+        
         // End Solution Edits
     
         printScenario4Transformations($index, $placeholderForModifiedPhrase, $placeholderForMiddleCharacters);

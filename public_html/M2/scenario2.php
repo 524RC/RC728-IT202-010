@@ -31,10 +31,17 @@ function sumValues($arr, $arrayNumber)
     $total = 0;
     // Start Solution Edits
     // Solve Challenge 1 here: Sum all values
+    //rc728 2/22/26 
+    //step 1: run through each variable in each array
+    //step 2: for the array, add each variable to total
+    //step 3: user number_format to stop at 2 decimal places
+        foreach ($arr as $value) {
+            $total += $value;
+        }
 
 
     // Solve Challenge 2 here: Format to 2 decimal places
-    $modifiedTotal = "?";
+    $modifiedTotal = number_format($total, 2, ".", "");
 
     // End Solution Edits
     printScenario2Output($total, $modifiedTotal);
