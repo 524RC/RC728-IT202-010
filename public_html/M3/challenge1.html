@@ -26,7 +26,8 @@ Requirements:
             <li><a href="challenge3.html">Challenge 3</a></li>
         </ul>
     </nav>
-    <!-- Edit your UCID here -->
+    <!-- Rc728 -->
+     
     <header>Header Section (mt85)</header>
     <!-- Don't make any other edits to the HTML -->
     <main>
@@ -56,6 +57,32 @@ Requirements:
 <script src="util.js"></script>
 
 <style>
+    
     /* You're free to make whatever edits you need here, just don't override anything in the styles.css */
     /* See the requirements at the top. If easier, you may copy/paste them here*/
+    /*Challenge 1: Full-Page Layout with Scrollable Content
+    -----------------------------------------------------
+    Requirements:
+    #1 The header and footer should remain FIXED in place (top and bottom of page respectively)
+    #2 The content area should SCROLL independently (nothing should be pushed off screen and the browser WINDOW scrollbar shouldn't appear)
+    #3 The entire page should always take up the full viewport height
+    #4 The borders around header,main,footer should remain intact and visible, this will help show that the challenges were solved correctly
+    */
+    /* Rc728 3/7/26 */
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body.challenge1 {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    main {
+        flex: 1;
+        overflow-y: auto;
+    }
 </style>

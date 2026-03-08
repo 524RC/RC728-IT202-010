@@ -96,8 +96,49 @@ Requirements:
 
 <script>
     /* Solve the button logic here by finding and attaching an appropriate event listener and logic*/
+    /* rc728 3/7/26 */
+    document.querySelector("#left-sidebar button").onclick = function() {
+        document.getElementById("left-sidebar").classList.toggle("collapsed");
+    }
+
+    document.querySelector("#right-sidebar button").onclick = function() {
+        document.getElementById("right-sidebar").classList.toggle("collapsed");
+    }
 </script>
 
 <style>
     /* You're free to make whatever edits you need here, just don't override anything in the styles.css */
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body.challenge2 {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        flex: 1;
+        display: flex;
+        min-height: 0;
+    }
+
+    #left-sidebar,
+    #right-sidebar {
+        width: 15%;
+        transition: width 0.3s ease;
+        overflow: hidden;
+    }
+
+    #left-sidebar.collapsed,
+    #right-sidebar.collapsed {
+        width: 40px;
+    }
+
+    .content {
+        flex: 1;
+        overflow-y: auto;
+    }
 </style>
