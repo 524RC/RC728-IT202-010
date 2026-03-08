@@ -77,8 +77,58 @@ Requirements:
 
 <script>
     /* Solve the button logic here by finding and attaching an appropriate event listener and logic*/
+    /* rc728 3/7/26 */
+    const panels = document.querySelectorAll(".panel");
+    const buttons = document.querySelectorAll("nav button");
+
+    let index = 0;
+
+    function showPanel() {
+        panels.forEach(p => p.style.display = "none");
+        panels[index].style.display = "flex";
+    }
+
+    showPanel();
+
+    buttons[0].onclick = function() {
+        index--;
+        if (index < 0) index = panels.length - 1;
+        showPanel();
+    };
+
+    buttons[1].onclick = function() {
+        index++;
+        if (index >= panels.length) index = 0;
+        showPanel();
+    };
 </script>
 
 <style>
     /* You're free to make whatever edits you need here, just don't override anything in the styles.css */
+    body.challenge3 {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .carousel {
+        flex: 1;
+        width: 100%;
+    }
+
+    .carousel-container {
+        height: 100%;
+    }
+
+    .panel {
+        display: none;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    body.challenge3 > nav:nth-of-type(2) {
+        display: flex;
+        justify-content: center;
+    }
 </style>
