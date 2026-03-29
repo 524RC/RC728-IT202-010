@@ -12,7 +12,7 @@ Filter the results where the todo item is completed and order the results by mos
 No limit is req uired.
 */
 // Rc728 3/29/26
-$query = "SELECT id, task, due, DATE(completed) AS completed, DATEDIFF(DATE(completed), due) AS days_offset, assigned
+$query = "SELECT id, task, due, DATE(completed) AS completed, DATEDIFF(due, DATE(completed)) AS days_offset, assigned
         FROM M4_Todos
         WHERE is_complete = 1
         ORDER BY completed DESC, due DESC"; // edit this
