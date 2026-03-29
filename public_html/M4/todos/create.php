@@ -19,6 +19,31 @@ if (empty($diff)) {
     // Assigned should check for "self" if a valid format/value isn't provided.
     // Start validations
     // can edit here
+    //rc728 3/27/26
+    if (empty(trim($task))) {
+        echo "Task is required.<br>";
+        $is_valid = false;
+    }
+
+    $date = DateTime::createFromFormat("Y-m-d", $due);
+    if (!$date || $date->format("Y-m-d") !== $due) {
+        echo "Due date must be a valid date in YYYY-MM-DD format.<br>";
+        $is_valid = false;
+    }
+
+    $assigned = trim($assigned);
+
+    if (empty($assigned)) {
+        echo "Assigned was empty, defaulted to self.<br>";
+        $assigned = "self";
+    } else {
+        if (strtolower($assigned) !== "self") {
+            if (!preg_match("/^[a-zA-Z-' ]+$/", $assigned)) {
+                echo "Assigned was invalid, defaulted to self.<br>";
+                $assigned = "self";
+            }
+        }
+    }
     // End validations
 
     
@@ -28,10 +53,15 @@ if (empty($diff)) {
         Ensure valid and proper PDO named placeholders are used.
         https://phpdelusions.net/pdo
         */
-        $query = ""; // edit this
-        $params = []; // Apply the proper PDO placeholder to variable mapping here
+        /* rc728 3/29/26 */
+        $query = "INSERT INTO todos (task, due, assigned) VALUES (:task, :due, :assigned)"; // edit this
+        $params = [
+            ":task" => $task,
+            ":due" => $due,
+            ":assigned" => $assigned
+        ]; // Apply the proper PDO placeholder to variable mapping here
         try {
-            $db = getDB();
+            $db = getDB();  
             $stmt = $db->prepare($query);
             $r = $stmt->execute($params);
             if ($r) {
@@ -58,17 +88,33 @@ if (empty($diff)) {
     <?php require_once(__DIR__ . "/../nav.php"); ?>
     <section>
         <h2>Create ToDo </h2>
+        <!-- rc728 3/27/26 --> 
         <form>
             <!-- design the form with proper labels and input fields with the correct types based on the SQL table.
              Wrap each label/input pair in a div tag.
              For "Assigned" ensure the default value is "self". -->
           
+            
+            <div>
+                <label for="task">Task</label>
+                <input id="task" name="task" type="text" required />
+            </div>
+
+            <div>
+                <label for="due">Due Date</label>
+                <input id="due" name="due" type="date" required />
+            </div>
+
+            <div>
+                <label for="assigned">Assigned</label>
+                <input id="assigned" name="assigned" type="text" value="self" required />
+            </div>
+
             <div>
                 <input type="submit" />
             </div>
         </form>
     </section>
-</body>
 </body>
 
 </html>
