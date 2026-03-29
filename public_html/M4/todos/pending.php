@@ -13,9 +13,9 @@ if (isset($_POST["id"])) {
     https://phpdelusions.net/pdo
     */
     //Rc728 3/28/26
-    $query = "UPDATE todos 
-              SET complete = 1, completed = CURRENT_DATE 
-              WHERE id = :id AND complete = 0"; // edit this
+    $query = "UPDATE M4_Todos 
+            SET is_complete = 1, completed = CURRENT_DATE 
+            WHERE id = :id AND is_complete = 0"; // edit this
     $params = [
         ":id" => $id
     ]; // apply mapping
@@ -42,9 +42,9 @@ No limit is required.
 */
 // Rc728 3/28/26
 $query = "SELECT id, task, due, DATEDIFF(due, CURRENT_DATE) AS days_offset, assigned
-          FROM todos
-          WHERE complete = 0
-          ORDER BY due ASC"; // edit this
+        FROM M4_Todos
+        WHERE is_complete = 0
+        ORDER BY due ASC"; // edit this
 $results = [];
 try {
     $stmt = $db->prepare($query);
