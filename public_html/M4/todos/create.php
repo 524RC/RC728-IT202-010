@@ -54,7 +54,7 @@ if (empty($diff)) {
         https://phpdelusions.net/pdo
         */
         /* rc728 3/29/26 */
-        $query = "INSERT INTO todos (task, due, assigned) VALUES (:task, :due, :assigned)"; // edit this
+        $query = "INSERT INTO M4_Todos (task, due, assigned) VALUES (:task, :due, :assigned)"; // edit this
         $params = [
             ":task" => $task,
             ":due" => $due,
