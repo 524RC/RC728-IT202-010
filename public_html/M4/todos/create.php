@@ -19,7 +19,7 @@ if (empty($diff)) {
     // Assigned should check for "self" if a valid format/value isn't provided.
     // Start validations
     // can edit here
-    //rc728 3/27/26
+    //Rc728 3/28/26
     if (empty(trim($task))) {
         echo "Task is required.<br>";
         $is_valid = false;
@@ -53,7 +53,7 @@ if (empty($diff)) {
         Ensure valid and proper PDO named placeholders are used.
         https://phpdelusions.net/pdo
         */
-        /* rc728 3/28/26 */
+        /* Rc728 3/28/26 */
         $query = "INSERT INTO M4_Todos (task, due, assigned) VALUES (:task, :due, :assigned)"; // edit this
         $params = [
             ":task" => $task,
@@ -88,7 +88,7 @@ if (empty($diff)) {
     <?php require_once(__DIR__ . "/../nav.php"); ?>
     <section>
         <h2>Create ToDo </h2>
-        <!-- rc728 3/27/26 --> 
+        <!-- Rc728 3/27/26 --> 
         <form>
             <!-- design the form with proper labels and input fields with the correct types based on the SQL table.
              Wrap each label/input pair in a div tag.
