@@ -53,7 +53,7 @@ if (empty($diff)) {
         Ensure valid and proper PDO named placeholders are used.
         https://phpdelusions.net/pdo
         */
-        /* rc728 3/29/26 */
+        /* rc728 3/28/26 */
         $query = "INSERT INTO M4_Todos (task, due, assigned) VALUES (:task, :due, :assigned)"; // edit this
         $params = [
             ":task" => $task,
