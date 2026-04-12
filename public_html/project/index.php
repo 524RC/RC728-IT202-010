@@ -27,12 +27,12 @@
 }
 .btn-primary {
     background-color: #007bff;
-    color: #fff;
+    color: #ffffff;
     border: none;
 }
 .btn-primary:hover, .btn-primary:focus {
     background-color: #0056b3;
-    color: #fff;
+    color: #ffffff;
 }
 .btn-secondary {
     background-color: #6c757d;
