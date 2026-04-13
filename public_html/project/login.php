@@ -1,39 +1,7 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
-<h3>Login</h3>
-<form onsubmit="return validate(this)" method="POST">
-    <div>
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>"/>
-    </div>
-    <div>
-        <label for="pw">Password</label>
-        <input type="password" id="pw" name="password" required minlength="8" />
-    </div>
-    <input type="submit" value="Login" />
-</form>
-<script>
-    function validate(form) {
-        //TODO 1: implement JavaScript validation (you'll do this on your own towards the end of Milestone1)
-        //ensure it returns false for an error and true for success
-        let email = form.email.value.trim();
-        let password = form.password.value;
 
-        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            alert("Invalid email address.");
-            return false;
-        }
-
-        if (password.length < 8) {
-            alert("Password must be at least 8 characters long.");
-            return false;
-        }
-
-        return true;
-    }
-</script>
 <?php
 //TODO 2: add PHP Code
 if (isset($_POST["email"], $_POST["password"])) {
@@ -91,4 +59,41 @@ if (isset($_POST["email"], $_POST["password"])) {
     }
     
 }
+?>
+<h3>Login</h3>
+<form onsubmit="return validate(this)" method="POST">
+    <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" required value="<?php echo htmlspecialchars($email ?? ""); ?>"/>
+    </div>
+    <div>
+        <label for="pw">Password</label>
+        <input type="password" id="pw" name="password" required minlength="8" />
+    </div>
+    <input type="submit" value="Login" />
+</form>
+<script>
+    function validate(form) {
+        //TODO 1: implement JavaScript validation (you'll do this on your own towards the end of Milestone1)
+        //ensure it returns false for an error and true for success
+        let email = form.email.value.trim();
+        let password = form.password.value;
+
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("Invalid email address.");
+            return false;
+        }
+
+        if (password.length < 8) {
+            alert("Password must be at least 8 characters long.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<?php
+require(__DIR__ . "/../../partials/flash.php");
+reset_session();
 ?>
