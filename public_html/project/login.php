@@ -5,7 +5,7 @@ require(__DIR__ . "/../../partials/nav.php");
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email</label>
-        <input id="email" type="email" name="email" required value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>"/>
+        <input id="email" type="email" name="email" required />
     </div>
     <div>
         <label for="pw">Password</label>
@@ -17,19 +17,6 @@ require(__DIR__ . "/../../partials/nav.php");
     function validate(form) {
         //TODO 1: implement JavaScript validation (you'll do this on your own towards the end of Milestone1)
         //ensure it returns false for an error and true for success
-        let email = form.email.value.trim();
-        let password = form.password.value;
-
-        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            alert("Invalid email address.");
-            return false;
-        }
-
-        if (password.length < 8) {
-            alert("Password must be at least 8 characters long.");
-            return false;
-        }
 
         return true;
     }
