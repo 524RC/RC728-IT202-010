@@ -2,7 +2,7 @@
 require(__DIR__ . "/../../partials/nav.php");
 ?>
 <h3>Register</h3>
-<form onsubmit="return validate(this)" method="POST">
+<form onsubmit="return validate(this)" method="POST" novalidate>
     <div>
         <label for="email">Email</label>
         <input id="email" type="email" name="email" required />
@@ -21,7 +21,34 @@ require(__DIR__ . "/../../partials/nav.php");
     function validate(form) {
         //TODO 1: implement JavaScript validation (you'll do this on your own towards the end of Milestone1)
         //ensure it returns false for an error and true for success
+        /*
+          let email = form.email.value.trim();
+        let username = form.username.value.trim();
+        let password = form.password.value;
+        let confirm = form.confirm.value;
 
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("Invalid email address.");
+            return false;
+        }
+
+        let usernamePattern = /^[a-z0-9_-]{3,30}$/;
+        if (!usernamePattern.test(username)) {
+            alert("Username must be lowercase, alphanumerical, and can only contain _ or -");
+            return false;
+        }
+
+        if (password.length < 8) {
+            alert("Password must be at least 8 characters long.");
+            return false;
+        }
+
+        if (password !== confirm) {
+            alert("Passwords must match.");
+            return false;
+        }
+        */
         return true;
     }
 </script>
