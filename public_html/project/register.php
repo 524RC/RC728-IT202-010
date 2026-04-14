@@ -1,7 +1,64 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
+<h3>Register</h3>
+<form onsubmit="return validate(this)" method="POST" >
+    <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" required value="<?php echo htmlspecialchars($email ?? ""); ?>" /> 
+    </div>
+    <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" required maxlength="30" value="<?php echo htmlspecialchars($username ?? ""); ?>" />
+    </div>
+    <div>
+        <label for="pw">Password</label>
+        <input type="password" id="pw" name="password" required minlength="8" />
+    </div>
+    <div>
+        <label for="confirm">Confirm</label>
+        <input type="password" name="confirm" required minlength="8" />
+    </div>
+    <input type="submit" value="Register" />
+</form>
+<script>
+    function validate(form) {
+        //TODO 1: implement JavaScript validation (you'll do this on your own towards the end of Milestone1)
+        //ensure it returns false for an error and true for success
+        /*
+        let email = form.email.value.trim();
+        let username = form.username.value.trim();
+        let pw = form.password.value;
+        let con = form.confirm.value;
 
+        // email check
+        if (!email.includes("@") || !email.includes(".")) {
+            alert("Invalid email address.");
+            return false;
+        }
+
+        // username check
+        if (username.length < 3) {
+            alert("Username must be at least 3 characters.");
+            return false;
+        }
+
+        // password length
+        if (pw.length < 8) {
+            alert("Password must be at least 8 characters long.");
+            return false;
+        }
+
+        // password match
+        if (pw !== con) {
+            alert("Passwords must match.");
+            return false;
+        }
+        */
+        return true;
+    }
+
+</script>
 <?php
 //TODO 2: add PHP Code
 if (isset($_POST["email"], $_POST["password"], $_POST["confirm"], $_POST["username"])) {
@@ -68,61 +125,6 @@ if (isset($_POST["email"], $_POST["password"], $_POST["confirm"], $_POST["userna
     }
 }
 ?>
-<h3>Register</h3>
-<form onsubmit="return validate(this)" method="POST" novalidate>
-    <div>
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required value="<?php echo htmlspecialchars($email ?? ""); ?>" /> />
-    </div>
-    <div>
-        <label for="username">Username</label>
-        <input type="text" name="username" required maxlength="30" value="<?php echo htmlspecialchars($username ?? ""); ?>" />/>
-    </div>
-    <div>
-        <label for="pw">Password</label>
-        <input type="password" id="pw" name="password" required minlength="8" />
-    </div>
-    <div>
-        <label for="confirm">Confirm</label>
-        <input type="password" name="confirm" required minlength="8" />
-    </div>
-    <input type="submit" value="Register" />
-</form>
-<script>
-    function validate(form) {
-        //TODO 1: implement JavaScript validation (you'll do this on your own towards the end of Milestone1)
-        //ensure it returns false for an error and true for success
-        /*
-        let email = form.email.value.trim();
-        let username = form.username.value.trim();
-        let password = form.password.value;
-        let confirm = form.confirm.value;
-
-        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            alert("Invalid email address.");
-            return false;
-        }
-
-        let usernamePattern = /^[a-z0-9_-]{3,30}$/;
-        if (!usernamePattern.test(username)) {
-            alert("Username must be lowercase, alphanumerical, and can only contain _ or -");
-            return false;
-        }
-
-        if (password.length < 8) {
-            alert("Password must be at least 8 characters long.");
-            return false;
-        }
-
-        if (password !== confirm) {
-            alert("Passwords must match.");
-            return false;
-        }
-            */
-        return true;
-    }
-</script>
 <?php
 require(__DIR__ . "/../../partials/flash.php");
 reset_session();
