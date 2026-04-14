@@ -3,7 +3,7 @@ ob_start();// Temp fix to resolve output buffer issues that send the header() ea
 require(__DIR__ . "/../../partials/nav.php");
 ?>
 <h3>Login</h3>
-<form onsubmit="return validate(this)" method="POST" novalidate>
+<form onsubmit="return validate(this)" method="POST" >
     <div>
         <label for="email">Email or Username</label>
         <input id="email" type="text" name="email" required value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>" />
@@ -18,7 +18,6 @@ require(__DIR__ . "/../../partials/nav.php");
     function validate(form) {
         //TODO 1: implement JavaScript validation (you'll do this on your own towards the end of Milestone1)
         //ensure it returns false for an error and true for success
-        /*
         let login = form.email.value.trim();
         let password = form.password.value;
 
@@ -43,7 +42,6 @@ require(__DIR__ . "/../../partials/nav.php");
             alert("Password must be at least 8 characters long.");
             return false;
         }
-        */
         return true;
     }
 </script>

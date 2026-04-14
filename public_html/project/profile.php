@@ -148,14 +148,14 @@ if (isset($_POST["currentPassword"], $_POST["newPassword"], $_POST["confirmPassw
 }
 ?>
 <h3>Profile</h3>
-<form method="POST" onsubmit="return validate(this);">
+<form method="POST" onsubmit="return validate(this);" >
     <div class="mb-3">
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="<?php se($email); ?>" />
+        <input type="email" name="email" id="email" required value="<?php se($email); ?>" />
     </div>
     <div class="mb-3">
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" value="<?php se($username); ?>" />
+        <input type="text" name="username" id="username" required value="<?php se($username); ?>" />
     </div>
     <!-- DO NOT PRELOAD PASSWORD -->
     <div>Password Reset</div>
@@ -165,20 +165,24 @@ if (isset($_POST["currentPassword"], $_POST["newPassword"], $_POST["confirmPassw
     </div>
     <div class="mb-3">
         <label for="np">New Password</label>
-        <input type="password" name="newPassword" id="np" />
+        <input type="password" name="newPassword" id="np" minlength="8"/>
     </div>
     <div class="mb-3">
         <label for="conp">Confirm Password</label>
-        <input type="password" name="confirmPassword" id="conp" />
+        <input type="password" name="confirmPassword" id="conp" minlength="8"/>
     </div>
     <input type="submit" value="Update Profile" name="save" />
 </form>
 
 <script>
     function validate(form) {
+        let email = form.email.value.trim();
+        let username = form.username.value.trim();
         let pw = form.newPassword.value;
         let con = form.confirmPassword.value;
         let isValid = true;
+        let flash = document.getElementById("flash");
+        flash.innerHTML = "";
         //TODO add other client side validation....
 
         //example of using flash via javascript
@@ -200,6 +204,49 @@ if (isset($_POST["currentPassword"], $_POST["newPassword"], $_POST["confirmPassw
             outerDiv.appendChild(innerDiv);
             //add the element to the DOM (if we don't it merely exists in memory)
             flash.appendChild(outerDiv);
+            
+            isValid = false;
+        }
+
+        if (!email.includes("@") || !email.includes(".")) {
+            let outerDiv = document.createElement("div");
+            outerDiv.className = "row justify-content-center";
+            let innerDiv = document.createElement("div");
+
+            innerDiv.className = "alert alert-warning";
+            innerDiv.innerText = "Invalid email format.";
+
+            outerDiv.appendChild(innerDiv);
+            flash.appendChild(outerDiv);
+
+            isValid = false;
+        }
+
+        if (username.length < 3) {
+            let outerDiv = document.createElement("div");
+            outerDiv.className = "row justify-content-center";
+            let innerDiv = document.createElement("div");
+
+            innerDiv.className = "alert alert-warning";
+            innerDiv.innerText = "Username must be at least 3 characters.";
+
+            outerDiv.appendChild(innerDiv);
+            flash.appendChild(outerDiv);
+
+            isValid = false;
+        }
+
+        if (pw.length > 0 && pw.length < 8) {
+            let outerDiv = document.createElement("div");
+            outerDiv.className = "row justify-content-center";
+            let innerDiv = document.createElement("div");
+
+            innerDiv.className = "alert alert-warning";
+            innerDiv.innerText = "Password must be at least 8 characters long.";
+
+            outerDiv.appendChild(innerDiv);
+            flash.appendChild(outerDiv);
+
             isValid = false;
         }
         // returning false will prevent the form from submitting
