@@ -44,7 +44,8 @@ function _sendRequest($url, $key, $data = [], $method = 'GET', $isRapidAPI = tru
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => $method,
         CURLOPT_HTTPHEADER => $headers,
-        CURLOPT_SSL_OPTIONS => CURLSSLOPT_NATIVE_CA
+        // this is the fix for the api
+        CURLOPT_SSL_OPTIONS => CURLSSLOPT_NATIVE_CA 
     ];
 
     if ($method == 'GET') {
