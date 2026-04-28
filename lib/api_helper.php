@@ -35,7 +35,7 @@ function _sendRequest($url, $key, $data = [], $method = 'GET', $isRapidAPI = tru
     $callback = fn (string $k, string $v): string => "$k: $v";
     $headers = array_map($callback, array_keys($headers), array_values($headers));
     $curl = curl_init();
-
+    //curl_setopt($ch, CURLOPT_SSL_OPTIONS, CURLSSLOPT_NATIVE_CA);
     $options = [
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "", // Specify encoding if known
@@ -44,6 +44,7 @@ function _sendRequest($url, $key, $data = [], $method = 'GET', $isRapidAPI = tru
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => $method,
         CURLOPT_HTTPHEADER => $headers,
+        CURLOPT_SSL_OPTIONS => CURLSSLOPT_NATIVE_CA
     ];
 
     if ($method == 'GET') {
