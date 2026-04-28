@@ -4,7 +4,7 @@ require(__DIR__ . "/../../partials/nav.php");
 $result = [];
 if (isset($_GET["keyword"]) && !empty($_GET["keyword"])) {
     $data = ["q" => $_GET["keyword"]];
-    $endpoint = "https://myanimelist.p.rapidapi.com/anime/search";
+    $endpoint = "https://myanimelist.p.rapidapi.com/v2/anime/search";
     $isRapidAPI = true;
     $rapidAPIHost = "myanimelist.p.rapidapi.com";
     $result = get($endpoint, "RAPIDAPI_KEY", $data, $isRapidAPI, $rapidAPIHost);
