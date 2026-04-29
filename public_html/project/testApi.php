@@ -11,6 +11,7 @@ if (isset($_GET["keyword"]) && !empty($_GET["keyword"])) {
 
 
 //rc728 4/29/26
+
     error_log("API Response: " . var_export($result, true));
     if (se($result, "status", 400, false) == 200 && isset($result["response"])) {
     $result = json_decode($result["response"], true);
