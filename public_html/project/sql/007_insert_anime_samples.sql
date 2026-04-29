@@ -1,6 +1,5 @@
 INSERT INTO Anime (mal_id, is_api, title, description, picture_url, mal_url) VALUES
 
--- API-fetched rows (is_api = 1, mal_id populated from API response)
 (21, 1, 'One Piece',
  'Barely surviving in a barrel after passing through a terrible whirlpool at sea, carefree Monkey D. Luffy ends up aboard a ship under attack by fearsome pirates.',
  'https://cdn.myanimelist.net/r/50x70/images/anime/6/73245.jpg',
@@ -16,7 +15,7 @@ INSERT INTO Anime (mal_id, is_api, title, description, picture_url, mal_url) VAL
  'https://cdn.myanimelist.net/r/50x70/images/anime/8/80356.jpg',
  'https://myanimelist.net/anime/32182/Mob_Psycho_100'),
 
--- Custom/manual rows (is_api = 0, mal_id NULL)
+
 (NULL, 0, 'My Favorite Underrated Anime',
  'A personal recommendation not pulled from any API search.',
  NULL, NULL),
