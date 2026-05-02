@@ -78,9 +78,13 @@ nav::after {
     color:red;
 }
 */
+.filerFontSize{
+    font-size:14px;
+}
 label{
-    border:#212529 dashed 2px;
-    background-color: bisque;
+    font-weight: 600;
+    color: #222;
+    font-size: 25px;
 }
 input {
     border-radius: 25%;
@@ -105,7 +109,7 @@ table{
 }
 
 body {
-    background-image: url('https://t4.ftcdn.net/jpg/08/40/94/07/360_F_840940728_f5wGCQBXDzdUBw1l7hKqxNLruMqCJbKu.jpg');
+    background-image: url('https://wallpapercat.com/w/full/2/3/e/142813-2560x1350-desktop-hd-dragon-ball-z-wallpaper-image.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -118,3 +122,79 @@ input[type="submit"]:hover {
 input[type="submit"]:active {
      transform: scale(.75)
 }
+/* this is on the testapi which makes the card for the anime and makes it look cleaner */
+
+.anime-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.anime-card {
+    background: rgba(233, 249, 255, 0.9);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px;
+    width: 600px; 
+    text-align: center; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.anime-card img {
+    width: 200px; 
+    border-radius: 10px;
+}
+
+.anime-card h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.anime-card p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.anime-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
+/* Anime list page */
+.anime-box {
+    width: 90%;
+    margin: 20px auto;
+    background: rgba(233, 249, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.anime-table {
+    width: 100%;
+}
+
+.anime-table th {
+    text-align: left;
+}
+
+.anime-table td, .anime-table th {
+    padding: 8px;
+}
+
+.anime-table img {
+    border-radius: 6px;
+}
+
+
