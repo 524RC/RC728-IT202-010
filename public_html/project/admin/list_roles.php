@@ -49,13 +49,14 @@ try {
 }
 
 ?>
+<div class="anime-box">
 <h3>List Roles</h3>
 <form method="POST">
     <!-- value is used to create a sticky form (maintains the data used in the initial form submission) -->
     <input type="search" name="role" placeholder="Role Filter" value="<?php se($_POST, "role"); ?>" />
     <input type="submit" value="Search" />
 </form>
-<small>Note: If you disabled Admin, you won't be able to login as Admin again until you re-enable it (may require a manual table edit).</small>
+<!-- <small>Note: If you disabled Admin, you won't be able to login as Admin again until you re-enable it (may require a manual table edit).</small> -->
 <table>
     <thead>
         <th>ID</th>
@@ -98,7 +99,9 @@ try {
         <?php endif; ?>
     </tbody>
 </table>
+</div>
 <?php
+
 //note we need to go up 1 more directory
 require_once(__DIR__ . "/../../../partials/flash.php");
 ?>

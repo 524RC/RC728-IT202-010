@@ -32,8 +32,13 @@ $allowed_sorts = ["title", "created", "modified", "is_api"];
 if (!in_array($sort, $allowed_sorts)) {
     $sort = "modified";
 }
+// this one allows it so that the most recent anime added is put to the top when it is filtered otherwise the newst records will show first
+if ($sort === "title") {
+    $query .= " ORDER BY title ASC LIMIT $limit";
+} else {
+    $query .= " ORDER BY $sort DESC LIMIT $limit";
+}
 
-$query .= " ORDER BY $sort ASC LIMIT $limit";
 $db = getDB();
 $stmt = $db->prepare($query);
 $anime_list = [];
