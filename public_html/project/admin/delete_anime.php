@@ -24,5 +24,5 @@ try {
 } catch (PDOException $e) {
     flash("Error deleting anime", "danger");
 }
-
+// this allows to return back to the previous page
 die(header("Location: " . $return));
