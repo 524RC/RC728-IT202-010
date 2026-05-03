@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <div class="anime-box">
     <h3>Edit Anime</h3>
 
-    <form method="POST" onsubmit="return validate(this)">
+    <form method="POST" novalidate onsubmit="return validate(this)">
         <div>
             <label>Title</label>
             <input name="title" required maxlength="255"
