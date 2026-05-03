@@ -73,7 +73,7 @@ if (isset($_POST["title"], $_POST["description"], $_POST["picture_url"], $_POST[
 
 <h3>Create Anime</h3>
 
-<form method="POST" onsubmit="return validate(this)" novalidate>
+<form method="POST" onsubmit="return validate(this)" >
     <div>
         <label for="title">Title</label>
         <input id="title" name="title" required maxlength="255"

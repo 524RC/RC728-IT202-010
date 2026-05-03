@@ -15,7 +15,6 @@ if ($id <= 0) {
 
 $db = getDB();
 
-// fetch existing data
 $stmt = $db->prepare("SELECT * FROM Anime WHERE id = :id");
 $stmt->execute([":id" => $id]);
 $anime = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -25,7 +24,7 @@ if (!$anime) {
     die(header("Location: " . get_url("list_anime.php")));
 }
 
-// prefill values
+
 $title = $anime["title"];
 $description = $anime["description"];
 $picture_url = $anime["picture_url"];
@@ -81,32 +80,41 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <div class="anime-box">
-<h3>Edit Anime</h3>
+    <h3>Edit Anime</h3>
 
-<form method="POST" onsubmit="return validate(this)">
-    <div>
-        <input name="title" required maxlength="255"
-               value="<?php echo htmlspecialchars($title); ?>" />
-    </div>
+    <form method="POST" onsubmit="return validate(this)">
+        <div>
+            <label>Title</label>
+            <input name="title" required maxlength="255"
+                value="<?php echo htmlspecialchars($title); ?>" />
+        </div>
 
-    <div>
-        <textarea name="description"><?php echo htmlspecialchars($description); ?></textarea>
-    </div>
+        <div>
+            <label>Description</label>
+            <textarea name="description"><?php echo htmlspecialchars($description); ?></textarea>
+        </div>
 
-    <div>
-        <input name="picture_url" type="url"
-               value="<?php echo htmlspecialchars($picture_url); ?>" />
-    </div>
+        <div>
+            <label>Picture URL</label>
+            <input name="picture_url" type="url"
+                value="<?php echo htmlspecialchars($picture_url); ?>" />
+        </div>
 
-    <div>
-        <input name="mal_url" type="url"
-               value="<?php echo htmlspecialchars($mal_url); ?>" />
-    </div>
+        <div>
+            <label>MyAnimeList URL</label>
+            <input name="mal_url" type="url"
+                value="<?php echo htmlspecialchars($mal_url); ?>" />
+        </div>
 
-    <input type="submit" value="Update" />
-</form>
+        <input type="submit" value="Update" />
+    </form>
+    <p>
+        <a href="<?php echo get_url('list_anime.php'); ?>">Back to List</a>
+        <a href="<?php echo get_url('anime_details.php?id=' . $id); ?>">View</a>
+    </p>
 </div>
 <script>
+
 function validate(form) {
     let title = form.title.value.trim();
     let pictureUrl = form.picture_url.value.trim();
