@@ -48,21 +48,43 @@ if (isset($_GET["keyword"]) && !empty($_GET["keyword"])) {
 }
 ?>
 <div class="container-fluid">
-    <h1>Anime Info</h1>
-    <p>This is a test of MyAnimeList API</p>
-    <form>
-        <div>
-            <label>Keyword</label>
-            <input name="keyword" />
-            <input type="submit" value="Fetch Anime" />
-        </div>
-    </form>
-    <div class="row">
-        <?php if (isset($result)) : ?>
+    <center>
+    <h1>Anime Search</Search></h1>
+    <p>Search any anime from MyAnimeList</p>
+    </center>
+    <div class="anime-container">
             <?php foreach ($result as $anime) : ?>
-                <pre><?php var_export($anime); ?></pre>
+                <div class="anime-card">
+                    
+                    <?php if (!empty($anime["picture_url"])) : ?>
+                        <div class="img-container">
+                            <img src="<?php se($anime, "picture_url"); ?>" alt="Anime image" />
+                        </div>
+                    <?php endif; ?>
+
+                    <h2><?php se($anime, "title"); ?></h2>
+
+                    <p>
+                        <?php echo htmlspecialchars(str_replace("...read more.", "", $anime["description"] ?? "")); ?>
+                    </p>
+
+                    <?php if (!empty($anime["myanimelist_url"])) : ?>
+                        <a href="<?php se($anime, "myanimelist_url"); ?>" target="_blank">
+                            View on MyAnimeList
+                        </a>
+                    <?php endif; ?>
+
+                </div>
             <?php endforeach; ?>
-        <?php endif; ?>
+        </div>
+    <div class="row">
+        <form>
+            <div>
+                <label>Keyword</label>
+                <input name="keyword" />
+                <input type="submit" value="Fetch Anime" />
+            </div>
+        </form>
     </div>
 </div>
 <?php
