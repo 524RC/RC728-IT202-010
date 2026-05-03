@@ -131,8 +131,10 @@ if (isset($_POST["username"])) {
         </tr>
     </tbody>
 </table>
-<input form="toggleForm" type="submit" value="Toggle Roles" />
-
+<div style="text-align: center; margin-top: 20px;">
+    <input form="toggleForm" type="submit" value="Toggle Roles" />
+</div>
+</div>
 <?php
 //note we need to go up 1 more directory
 require_once(__DIR__ . "/../../../partials/flash.php");

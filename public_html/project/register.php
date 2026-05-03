@@ -25,7 +25,7 @@ require(__DIR__ . "/../../partials/nav.php");
     function validate(form) {
         //TODO 1: implement JavaScript validation (you'll do this on your own towards the end of Milestone1)
         //ensure it returns false for an error and true for success
-        /*
+        
         let email = form.email.value.trim();
         let username = form.username.value.trim();
         let pw = form.password.value;
@@ -54,7 +54,7 @@ require(__DIR__ . "/../../partials/nav.php");
             alert("Passwords must match.");
             return false;
         }
-        */
+        
         return true;
     }
 

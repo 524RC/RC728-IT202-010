@@ -25,25 +25,76 @@ if ($domain != "localhost") {
 session_start();
 
 ?>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php get_url('styles.css', true);?>">
 <script src="<?php get_url('helpers.js', true);?>"></script>
-<nav>
-    <ul>
-        <?php if (is_logged_in()) : ?>
-            <li><a href="<?php get_url('landing.php', true);?>">Landing</a></li>
-            <li><a href="<?php get_url('profile.php', true);?>">Profile</a></li>
-        <?php endif; ?>
-        <?php if (!is_logged_in()) : ?>
-            <li><a href="<?php get_url('login.php', true);?>">Login</a></li>
-            <li><a href="<?php get_url('register.php', true);?>">Register</a></li>
-        <?php endif; ?>
-        <?php if (has_role("Admin")) : ?>
-            <li><a href="<?php get_url('admin/create_role.php', true); ?>">Create Role</a></li>
-            <li><a href="<?php get_url('admin/list_roles.php', true); ?>">List Roles</a></li>
-            <li><a href="<?php get_url('admin/assign_roles.php', true); ?>">Assign Roles</a></li>
-        <?php endif; ?>
-        <?php if (is_logged_in()) : ?>
-            <li><a href="<?php get_url('logout.php', true);?>">Logout</a></li>
-        <?php endif; ?>
-    </ul>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<nav class="navbar navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="<?php get_url('landing.php', true); ?>">Ryan's Anime Site</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+          <?php if (is_logged_in()) : ?>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php get_url('landing.php', true); ?>">Landing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php get_url('profile.php', true); ?>">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php get_url('testApi.php', true); ?>">Search Anime</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php get_url('list_anime.php', true); ?>">Anime List</a>
+            </li>
+          <?php endif; ?>
+
+          <?php if (!is_logged_in()) : ?>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php get_url('login.php', true); ?>">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php get_url('register.php', true); ?>">Register</a>
+            </li>
+          <?php endif; ?>
+
+          <?php if (has_role("Admin")) : ?>
+            <hr>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php get_url('admin/create_role.php', true); ?>">Create Role</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php get_url('admin/list_roles.php', true); ?>">List Roles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php get_url('admin/assign_roles.php', true); ?>">Assign Roles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php get_url('admin/create_anime.php', true); ?>">Create Anime</a>
+            </li>
+          <?php endif; ?>
+
+          <?php if (is_logged_in()) : ?>
+            <hr>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="<?php get_url('logout.php', true); ?>">Logout</a>
+            </li>
+          <?php endif; ?>
+
+        </ul>
+      </div>
+    </div>
+  </div>
 </nav>
