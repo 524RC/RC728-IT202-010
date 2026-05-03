@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </p>
 </div>
 <script>
-
+/*
 function validate(form) {
     let title = form.title.value.trim();
     let pictureUrl = form.picture_url.value.trim();
@@ -142,6 +142,7 @@ function validate(form) {
 
     return true;
 }
+*/
 </script>
 
 <?php require(__DIR__ . "/../../../partials/flash.php"); ?>
