@@ -37,32 +37,103 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $picture_url = se($_POST, "picture_url", "", false);
     $mal_url = se($_POST, "mal_url", "", false);
 
-    $stmt = $db->prepare("UPDATE Anime 
-        SET title = :title, description = :description, picture_url = :picture_url, mal_url = :mal_url
-        WHERE id = :id");
+    $hasError = false;
 
-    try {
-        $stmt->execute([
-            ":title" => $title,
-            ":description" => $description,
-            ":picture_url" => $picture_url,
-            ":mal_url" => $mal_url,
-            ":id" => $id
-        ]);
-        flash("Anime updated", "success");
-    } catch (PDOException $e) {
-        flash("Error updating anime", "danger");
+    if (empty($title)) {
+        flash("Title is required", "warning");
+        $hasError = true;
+    }
+
+    if (strlen($title) > 255) {
+        flash("Title must be 255 characters or less", "warning");
+        $hasError = true;
+    }
+
+    if (!empty($picture_url) && !filter_var($picture_url, FILTER_VALIDATE_URL)) {
+        flash("Invalid picture URL", "warning");
+        $hasError = true;
+    }
+
+    if (!empty($mal_url) && !filter_var($mal_url, FILTER_VALIDATE_URL)) {
+        flash("Invalid MyAnimeList URL", "warning");
+        $hasError = true;
+    }
+
+    if (!$hasError) {
+        $stmt = $db->prepare("UPDATE Anime 
+            SET title = :title, description = :description, picture_url = :picture_url, mal_url = :mal_url
+            WHERE id = :id");
+
+        try {
+            $stmt->execute([
+                ":title" => $title,
+                ":description" => $description,
+                ":picture_url" => $picture_url,
+                ":mal_url" => $mal_url,
+                ":id" => $id
+            ]);
+            flash("Anime updated", "success");
+        } catch (PDOException $e) {
+            flash("Error updating anime", "danger");
+        }
     }
 }
 ?>
 
+<div class="anime-box">
 <h3>Edit Anime</h3>
-<form method="POST">
-    <input name="title" value="<?php echo htmlspecialchars($title); ?>" required />
-    <textarea name="description"><?php echo htmlspecialchars($description); ?></textarea>
-    <input name="picture_url" value="<?php echo htmlspecialchars($picture_url); ?>" />
-    <input name="mal_url" value="<?php echo htmlspecialchars($mal_url); ?>" />
+
+<form method="POST" onsubmit="return validate(this)">
+    <div>
+        <input name="title" required maxlength="255"
+               value="<?php echo htmlspecialchars($title); ?>" />
+    </div>
+
+    <div>
+        <textarea name="description"><?php echo htmlspecialchars($description); ?></textarea>
+    </div>
+
+    <div>
+        <input name="picture_url" type="url"
+               value="<?php echo htmlspecialchars($picture_url); ?>" />
+    </div>
+
+    <div>
+        <input name="mal_url" type="url"
+               value="<?php echo htmlspecialchars($mal_url); ?>" />
+    </div>
+
     <input type="submit" value="Update" />
 </form>
+</div>
+<script>
+function validate(form) {
+    let title = form.title.value.trim();
+    let pictureUrl = form.picture_url.value.trim();
+    let malUrl = form.mal_url.value.trim();
+
+    if (title.length === 0) {
+        alert("Title is required");
+        return false;
+    }
+
+    if (title.length > 255) {
+        alert("Title must be 255 characters or less");
+        return false;
+    }
+
+    if (pictureUrl.length > 0 && !pictureUrl.startsWith("http")) {
+        alert("Picture URL must be valid");
+        return false;
+    }
+
+    if (malUrl.length > 0 && !malUrl.startsWith("http")) {
+        alert("MyAnimeList URL must be valid");
+        return false;
+    }
+
+    return true;
+}
+</script>
 
 <?php require(__DIR__ . "/../../../partials/flash.php"); ?>
