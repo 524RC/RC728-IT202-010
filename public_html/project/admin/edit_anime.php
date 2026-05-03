@@ -15,7 +15,6 @@ if ($id <= 0) {
 
 $db = getDB();
 
-// fetch existing data
 $stmt = $db->prepare("SELECT * FROM Anime WHERE id = :id");
 $stmt->execute([":id" => $id]);
 $anime = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -25,7 +24,7 @@ if (!$anime) {
     die(header("Location: " . get_url("list_anime.php")));
 }
 
-// prefill values
+
 $title = $anime["title"];
 $description = $anime["description"];
 $picture_url = $anime["picture_url"];
@@ -115,6 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </p>
 </div>
 <script>
+
 function validate(form) {
     let title = form.title.value.trim();
     let pictureUrl = form.picture_url.value.trim();
