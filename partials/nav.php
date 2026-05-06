@@ -93,6 +93,9 @@ session_start();
             <li class="nav-item">
                 <a class="nav-link" href="<?php get_url('admin/unassociated_anime.php', true); ?>">Unassociated Anime</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php get_url('admin/assign_watchlist.php', true); ?>">Assign Watchlist</a>
+            </li>
           <?php endif; ?>
 
           <?php if (is_logged_in()) : ?>

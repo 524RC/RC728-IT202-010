@@ -47,9 +47,9 @@ $anime_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="anime-box">
     <h3>Unassociated Anime</h3>
-
-    <p>Total shown: <?php echo count($anime_list); ?></p>
-
+    <center>
+    <Label>Total shown: <?php echo count($anime_list); ?></label>
+    </center>
     <form method="GET" class="anime-filter-form">
         <input 
             type="search" 
