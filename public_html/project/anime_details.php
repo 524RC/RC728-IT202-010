@@ -40,6 +40,11 @@ if (!$anime) {
     <p>
         <a href="<?php get_url('list_anime.php', true); ?>">Back to List</a>
 
+        <?php if (is_logged_in()) : ?>
+            |
+            <a href="<?php echo get_url('add_watchlist.php?id=' . $anime['id']); ?>">Add to Watchlist</a>
+        <?php endif; ?>
+
         <?php if (has_role("Admin")) : ?>
             |
             <a href="<?php get_url('admin/edit_anime.php?id=' . $anime['id'], true); ?>">Edit</a>
