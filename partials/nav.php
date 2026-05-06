@@ -59,6 +59,9 @@ session_start();
             <li class="nav-item">
               <a class="nav-link" href="<?php get_url('list_anime.php', true); ?>">Anime List</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php get_url('my_watchlist.php', true); ?>">My Watchlist</a>
+            </li>
           <?php endif; ?>
 
           <?php if (!is_logged_in()) : ?>
@@ -83,6 +86,9 @@ session_start();
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php get_url('admin/create_anime.php', true); ?>">Create Anime</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php get_url('admin/all_watchlists.php', true); ?>">All Watchlists</a>
             </li>
           <?php endif; ?>
 
