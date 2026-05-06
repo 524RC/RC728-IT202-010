@@ -145,7 +145,7 @@ try {
                             <a href="<?php get_url('admin/edit_anime.php?id=' . $anime['id'], true); ?>">Edit</a>
                             |
                             <a 
-                                href="<?php get_url('admin/delete_anime.php?id=' . $anime['id'], true); ?>"
+                                href="<?php echo get_url('admin/delete_anime.php?id=' . $anime['id'] . '&return=' . urlencode($_SERVER['REQUEST_URI'])); ?>"
                                 onclick="return confirm('Are you sure you want to delete this anime?');"
                             >
                                 Delete

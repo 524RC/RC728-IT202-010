@@ -12,46 +12,6 @@
         font-size: 1rem;
 
     }
-
-    .alert-primary {
-        background-color: #cfe2ff;
-        color: #084298;
-    }
-
-    .alert-secondary {
-        background-color: #e2e3e5;
-        color: #41464b;
-    }
-
-    .alert-success {
-        background-color: #d1e7dd;
-        color: #0f5132;
-    }
-
-    .alert-danger {
-        background-color: #f8d7da;
-        color: #842029;
-    }
-
-    .alert-warning {
-        background-color: #fff3cd;
-        color: #664d03;
-    }
-
-    .alert-info {
-        background-color: #cff4fc;
-        color: #055160;
-    }
-
-    .alert-light {
-        background-color: #fefefe;
-        color: #636464;
-    }
-
-    .alert-dark {
-        background-color: #212529;
-        color: #fff;
-    }
 }
 /* Update the below for Milestone 1 requirements */
 nav li {
@@ -128,7 +88,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
     color: rgb(0, 0, 0);
-    padding-top:400px;
+    padding-top:200px;
 }
 
 input[type="submit"]:hover {
