@@ -7,10 +7,11 @@ if (!has_role("Admin")) {
 }
 
 $id = (int)se($_GET, "id", 0, false);
+$return = se($_GET, "return", get_url("list_anime.php"), false);
 
 if ($id <= 0) {
     flash("Invalid ID", "danger");
-    die(header("Location: " . get_url("list_anime.php")));
+    die(header("Location: " . $return));
 }
 
 $db = getDB();
@@ -23,5 +24,5 @@ try {
 } catch (PDOException $e) {
     flash("Error deleting anime", "danger");
 }
-
-die(header("Location: " . get_url("list_anime.php")));
+// this allows to return back to the previous page
+die(header("Location: " . $return));

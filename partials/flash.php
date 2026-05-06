@@ -16,26 +16,3 @@
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
-
-<style>
-    #flash {
-        left: 50%;
-        transform: translateX(-50%);
-        width: auto;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        opacity: 0.9;
-        z-index: 1000;
-        position: fixed;
-        top: 1rem;
-
-        background-color: gainsboro;
-    }
-
-    #flash:empty,
-    #flash:blank,
-    #flash:not(:has(*)):not(:empty) {
-        display: none;
-    }
-</style>
