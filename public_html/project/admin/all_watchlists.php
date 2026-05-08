@@ -131,7 +131,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php foreach ($results as $row) : ?>
                     <tr>
                         <td>
-                            <a href="<?php echo get_url('profile.php?id=' . $row['user_id']); ?>">
+                            <a href="<?php echo get_url('public_profile.php?id=' . $row['user_id']); ?>">
                                 <?php se($row, "username"); ?>
                             </a>
                         </td>
@@ -162,7 +162,11 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <a href="<?php echo get_url('anime_details.php?id=' . $row['anime_id']); ?>">View</a>
                             |
                             <a 
-                                href="<?php echo get_url('admin/remove_user_watchlist.php?id=' . $row['watchlist_id']); ?>"
+                                href="<?php echo get_url(
+                                    'admin/remove_user_watchlist.php?id=' . 
+                                    $row['watchlist_id'] . 
+                                    '&return=' . urlencode($_SERVER['REQUEST_URI'])
+                                ); ?>"
                                 onclick="return confirm('Remove this relationship?');"
                             >
                                 Remove
